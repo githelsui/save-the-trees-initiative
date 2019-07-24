@@ -6,8 +6,9 @@ body, html {
 }
 
 #canvas {
-		height: 70%;
 		width: 70%;
+		height: 100%;
+	}
 
 #meme-div {
 	text-align: center;
