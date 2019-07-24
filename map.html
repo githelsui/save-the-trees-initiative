@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Full Screen Leaflet Map</title>
+    <title>Save the Trees Initiative</title>
     <meta charset="utf-8" />
     <link
         rel="stylesheet"
-        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
-    />
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"/>
     <style>
         body {
             padding: 0;
             margin: 0;
         }
-        html, body, #map {
+        html, body, #canvas {
             height: 100%;
             width: 100%;
         }
     </style>
 </head>
 <body>
-    <div id="map"></div>
+    <div id="canvas"></div>
 
-    <script
-        src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
-    </script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
 
     <script>
         var map = L.map('map').setView([-41.2858, 174.78682], 14);
@@ -50,6 +47,5 @@
 
 
 
-    </script>
-</body>
+    </script></body>
 </html>
