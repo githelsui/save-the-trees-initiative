@@ -4,44 +4,37 @@ import jinja2
 import os
 from google.appengine.ext import ndb
 from google.appengine.api import users
-from models import Meme
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-# other functions should go above the handlers or in a separate file
-def get_meme_url(meme_choice):
-    meme_dict = {
-        'classic-surprised-pikachu': 'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png',
-        'shocked-pikachu': 'https://static2.thegamerimages.com/wordpress/wp-content/uploads/2017/02/pikashocked.jpg?q=50&fit=crop&w=798&h=407&dpr=1.5',
-        'detective-surprised-pikachu': 'https://i.guim.co.uk/img/media/dd703cd39013271a45bc199fae6aa1ddad72faaf/0_0_2000_1200/master/2000.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=7ce471cd741c8353f3ba5d8397805a88',
-        'ketchup-loving-pikachu': 'https://static1.srcdn.com/wordpress/wp-content/uploads/Pikachu-Ketchup-e1468812509723.jpg'
-        }
-    return meme_dict.get(meme_choice)
-
 # the handler section
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        if user:
-            nickname = user.nickname()
-            logout_url = users.create_logout_url('/')
-            greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
-                nickname, logout_url)
-        else:
-            login_url = users.create_login_url('/')
-            greeting = '<a href="{}">Sign in</a>'.format(login_url)
-        self.response.write(
-            '<html><body>{}</body></html>'.format(greeting))
+        map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
+        self.response.write(map_template.render())
 
-class EditInfo(webapp2.RequestHandler):
-    def get(self):
-        key_string = self.request.get('key')
+        my_user = users.get_current_user()
+        # user = users.get_current_user()
+        # if user:
+        #     nickname = user.nickname()
+        #     logout_url = users.create_logout_url('/')
+        #     greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
+        #         nickname, logout_url)
+        # else:
+        #     login_url = users.create_login_url('/')
+        #     greeting = '<a href="{}">Sign in</a>'.format(login_url)
+        # self.response.write(
+        #     '<html><body>{}</body></html>'.format(greeting))
 
-class ShowMemeHandler(webapp2.RequestHandler):
-    def get(self):
+# class EditInfo(webapp2.RequestHandler):
+#     def get(self):
+#         key_string = self.request.get('key')
+#
+# class ShowMemeHandler(webapp2.RequestHandler):
+#     def get(self):
         # results_template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         # meme_key = ndb.Key(urlsafe=self.request.get("key"))
         #
@@ -57,7 +50,7 @@ class ShowMemeHandler(webapp2.RequestHandler):
         # }
         # self.response.write(results_template.render(the_variable_dict))
 
-    def post(self):
+        #def post(self):
         # Access the user data via the form's input elements' names.
         # meme_first_line = self.request.get('user-first-ln')
         # meme_second_line = self.request.get('user-second-ln')
