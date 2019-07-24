@@ -13,12 +13,12 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 # other functions should go above the handlers or in a separate file
 def get_meme_url(meme_choice):
-    meme_dict = {
-        'classic-surprised-pikachu': 'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png',
-        'shocked-pikachu': 'https://static2.thegamerimages.com/wordpress/wp-content/uploads/2017/02/pikashocked.jpg?q=50&fit=crop&w=798&h=407&dpr=1.5',
-        'detective-surprised-pikachu': 'https://i.guim.co.uk/img/media/dd703cd39013271a45bc199fae6aa1ddad72faaf/0_0_2000_1200/master/2000.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=7ce471cd741c8353f3ba5d8397805a88',
-        'ketchup-loving-pikachu': 'https://static1.srcdn.com/wordpress/wp-content/uploads/Pikachu-Ketchup-e1468812509723.jpg'
-        }
+    #meme_dict = {
+    #    'classic-surprised-pikachu': 'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png',
+    #    'shocked-pikachu': 'https://static2.thegamerimages.com/wordpress/wp-content/uploads/2017/02/pikashocked.jpg?q=50&fit=crop&w=798&h=407&dpr=1.5',
+    #    'detective-surprised-pikachu': 'https://i.guim.co.uk/img/media/dd703cd39013271a45bc199fae6aa1ddad72faaf/0_0_2000_1200/master/2000.jpg?width=620&quality=45&auto=format&fit=max&dpr=2&s=7ce471cd741c8353f3ba5d8397805a88',
+    #    'ketchup-loving-pikachu': 'https://static1.srcdn.com/wordpress/wp-content/uploads/Pikachu-Ketchup-e1468812509723.jpg'
+    #    }
     return meme_dict.get(meme_choice)
 
 # the handler section
