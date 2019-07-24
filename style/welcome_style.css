@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins|Raleway&display=swap');
+
 body, html {
     padding: 0;
     margin: 0;
@@ -15,9 +16,8 @@ h1{
   font-family: "Poppins"
 }
 
-#meme-div {
-	text-align: center;
-	position: relative;
+h2{
+  font-family: "Poppins"
 }
 
 h2 {
@@ -43,7 +43,6 @@ h2 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 .meme_bottom_line {
 	position: absolute;

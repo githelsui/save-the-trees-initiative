@@ -29,6 +29,12 @@ class MainPage(webapp2.RequestHandler):
         # self.response.write(
         #     '<html><body>{}</body></html>'.format(greeting))
 
+class InfoPage(webapp2.RequestHandler):
+    def get(self):
+        map_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
+        self.response.write(map_template.render())
+
+        my_user = users.get_current_user()
 # class EditInfo(webapp2.RequestHandler):
 #     def get(self):
 #         key_string = self.request.get('key')
@@ -79,5 +85,5 @@ class MainPage(webapp2.RequestHandler):
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    # ('/memeresult', ShowMemeHandler)
+    ('/info', InfoPage)
 ], debug=True)
