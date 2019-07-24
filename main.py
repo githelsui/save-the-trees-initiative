@@ -36,6 +36,10 @@ class MainPage(webapp2.RequestHandler):
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
 
+class EditInfo(webapp2.RequestHandler):
+    def get(self):
+        key_string = self.request.get('key')
+
 class ShowMemeHandler(webapp2.RequestHandler):
     def get(self):
         # results_template = JINJA_ENVIRONMENT.get_template('templates/results.html')
