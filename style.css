@@ -6,8 +6,13 @@ body, html {
 }
 
 #canvas {
+<<<<<<< HEAD
 		height: 100%;
+=======
+>>>>>>> 899393f1f29066dd6d432df58cb5ab2096e6a0ec
 		width: 70%;
+		height: 100%;
+	}
 
 #meme-div {
 	text-align: center;
