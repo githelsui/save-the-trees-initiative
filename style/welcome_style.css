@@ -1,0 +1,51 @@
+body, html {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+}
+
+#welcome {
+		height: 100%;
+		width: 100%;
+	}
+
+#meme-div {
+	text-align: center;
+	position: relative;
+}
+
+h2 {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto 0;
+	padding: 0 auto;
+	font-family: impact;
+	color: white;
+	text-shadow: 2px 2px black;
+}
+
+
+.meme_top_line {
+	position: absolute;
+	top: 0;
+}
+
+.meme_middle_line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.meme_bottom_line {
+	position: absolute;
+	bottom: 0;
+}
+
+.meme_image {
+	max-width: 300px;
+	max-height: 300px;
+}
