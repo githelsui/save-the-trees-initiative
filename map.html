@@ -34,6 +34,22 @@
             attribution: '&copy; ' + mapLink + ' Contributors',
             maxZoom: 18,
             }).addTo(map);
+
+        map.on('click', function(e) {
+
+          L.marker(e.latlng).addTo(map);
+        });
+
+        loadData();
+
+        function loadData(all){
+          for each(marker in all){
+            L.marker(marker).addTo(map)
+          }
+        }
+
+
+
     </script>
 </body>
 </html>

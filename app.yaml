@@ -5,8 +5,11 @@ threadsafe: true
 handlers:
 - url: /css
   static_dir: css
-- url: /.*
+
+
+- url: .*
   script: main.app
+  login: required
 
 libraries:
 - name: webapp2
