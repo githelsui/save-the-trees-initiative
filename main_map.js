@@ -9,7 +9,7 @@ const treeicn = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var map = L.map('canvas').setView([34.27083595165, -117.740478515625], 14);
+var map = L.map('canvas').setView([33.99893452860995, -118.48341822624205], 14);
 mapLink =
     '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer(
