@@ -14,7 +14,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class MainPage(webapp2.RequestHandler):
     def get(self):
         map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
-        self.response.write(map_template.render())
         my_user = users.get_current_user()
         #map_url = users.create_map_url('/')
         #self.response.write(map_template.render({'mapurl': map_url}))
@@ -26,7 +25,6 @@ class MainPage(webapp2.RequestHandler):
 
     def post(self):
         map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
-        self.response.write(map_template.render())
         my_user = users.get_current_user()
         #map_url = users.create_map_url('/')
         #self.response.write(map_template.render({'mapurl': map_url}))

@@ -4,12 +4,20 @@
     <title>Save the Trees Initiative</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"/>
-    <link rel="stylesheet" href="style/style.css"
+    <link rel="stylesheet" href="style/style.css"/>
 </head>
 <body>
-    <div id="canvas">
-        <button type="submit">Start Planting</button>
-    </div>
+  <div class="container">
+      <div id="canvas"></div>
+      <div class="sidebar">
+        <h1>Axel</h1>
+        <h2>Trees you've saved:</h2>
+          <div class="tree-container">
+            <p>No trees planted yet.</p>
+          </div>
+      </div>
+  </div>
+
     <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
     <script src="javascript/main_map.js"></script>
 </body>

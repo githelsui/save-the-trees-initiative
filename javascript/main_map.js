@@ -1,3 +1,5 @@
+const likeBtn = document.querySelector("#like");
+
 const treeicn = L.icon({
     iconUrl: 'https://img.icons8.com/color/52/000000/deciduous-tree.png',
     // shadowUrl: 'https://img.icons8.com/bubbles/26/000000/deciduous-tree.png',
@@ -20,6 +22,7 @@ L.tileLayer(
 
 map.on('click', function(e) {
    L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map);
+   console.log(e);
 });
 
 // loadData();

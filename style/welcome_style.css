@@ -8,7 +8,7 @@
 
 body, html {
   margin: 0;
-    height: 100%;
+  height: 100%;
 }
 
 .bg{
@@ -19,7 +19,6 @@ body, html {
   height: 100vh;
   display: flex;
 }
-
 
 #welcome {
   margin: 0;
