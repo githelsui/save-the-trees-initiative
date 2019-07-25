@@ -7,45 +7,23 @@ body, html {
 
 #canvas {
 		height: 100%;
-		width: 70%;
+		width: 100%;
 	}
 
-#meme-div {
-	text-align: center;
-	position: relative;
-}
-
-h2 {
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: auto 0;
-	padding: 0 auto;
-	font-family: impact;
+	button {
+	padding: 20px;
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	border-radius: 25px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.7);
 	color: white;
-	text-shadow: 2px 2px black;
-}
-
-
-.meme_top_line {
-	position: absolute;
-	top: 0;
-}
-
-.meme_middle_line {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-.meme_bottom_line {
-	position: absolute;
-	bottom: 0;
-}
-
-.meme_image {
-	max-width: 300px;
-	max-height: 300px;
-}
+	font-size: 30px;
+	cursor: pointer;
+	border: 1px solid white;
+	text-decoration: none;
+	}
+	button:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 1);
+	color: white;
+	}
