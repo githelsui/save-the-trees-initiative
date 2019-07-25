@@ -26,7 +26,10 @@ map.on('click', function(e) {
    L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map);
    console.log(e);
    numTrees++;
-
+   fetch("/tree", {
+     method: 'post',
+     body: JSON.stringify(e.latlng),
+   });
 });
 
 // loadData();
