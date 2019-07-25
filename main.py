@@ -17,24 +17,13 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
         my_user = users.get_current_user()
-        #map_url = users.create_map_url('/')
-        #self.response.write(map_template.render({'mapurl': map_url}))
-        if my_user:
-            logout_url = users.create_logout_url('/')
-            self.response.write(map_template.render())
-        else:
+        if my_user == None:
             self.redirect('/login')
 
-    def post(self):
-        map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
-        my_user = users.get_current_user()
-        #map_url = users.create_map_url('/')
-        #self.response.write(map_template.render({'mapurl': map_url}))
-        if my_user:
-            logout_url = users.create_logout_url('/')
-            self.response.write(map_template.render())
-        else:
-            self.redirect('/login')
+        logout_url = users.create_logout_url('/')
+        trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
+        dict_for_template = {'trees': trees}
+        self.response.write(map_template.render(dict_for_template))
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
