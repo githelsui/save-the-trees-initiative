@@ -24,12 +24,24 @@ class MainPage(webapp2.RequestHandler):
         else:
             self.redirect('/login')
 
+    def post(self):
+        map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
+        self.response.write(map_template.render())
+        my_user = users.get_current_user()
+        #map_url = users.create_map_url('/')
+        #self.response.write(map_template.render({'mapurl': map_url}))
+        if my_user:
+            logout_url = users.create_logout_url('/')
+            self.response.write(map_template.render())
+        else:
+            self.redirect('/login')
+
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
         login_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
         my_user = users.get_current_user()
-        login_url = users.create_login_url('/login')
+        login_url = users.create_login_url('/')
         self.response.write( login_template.render( {'loginurl': login_url} )  )
 
     def post(self):
@@ -38,12 +50,6 @@ class LoginPage(webapp2.RequestHandler):
         login_url = users.create_login_url('/')
         self.response.write( login_template.render( {'loginurl': login_url} )  )
 
-
-    def post(self):
-        login_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
-        my_user = users.get_current_user()
-        login_url = users.create_login_url('/')
-        self.response.write( login_template.render({'loginurl': login_url}))
 # class EditInfo(webapp2.RequestHandler):
 #     def get(self):
 #         key_string = self.request.get('key')
