@@ -16,14 +16,14 @@ class MainPage(webapp2.RequestHandler):
         map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
         self.response.write(map_template.render())
         my_user = users.get_current_user()
+        #map_url = users.create_map_url('/')
+        #self.response.write(map_template.render({'mapurl': map_url}))
         if my_user:
             logout_url = users.create_logout_url('/')
             self.response.write(map_template.render())
         else:
             self.redirect('/login')
-        #     greeting = '<a href="{}">Sign in</a>'.format(login_url)
-        # self.response.write(
-        #     '<html><body>{}</body></html>'.format(greeting))
+
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
