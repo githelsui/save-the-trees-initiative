@@ -19,6 +19,8 @@ class MainPage(webapp2.RequestHandler):
         my_user = users.get_current_user()
         #map_url = users.create_map_url('/')
         #self.response.write(map_template.render({'mapurl': map_url}))
+    #    logout_url = users.create_logout_url('/')
+        #self.response.write(logout_template.render({'logouturl': logout_url}))
         if my_user:
             logout_url = users.create_logout_url('/')
             self.response.write(map_template.render())
@@ -30,6 +32,7 @@ class MainPage(webapp2.RequestHandler):
         my_user = users.get_current_user()
         #map_url = users.create_map_url('/')
         #self.response.write(map_template.render({'mapurl': map_url}))
+        #self.response.write(logout_template.render({'logouturl': logout_url}))
         if my_user:
             logout_url = users.create_logout_url('/')
             self.response.write(map_template.render())
