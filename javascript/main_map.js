@@ -18,9 +18,8 @@ L.tileLayer(
     maxZoom: 18,
     }).addTo(map);
 
-map.on('click', function(e){
-  L.marker(e.latlng, {icon: treeicn}).addTo(map);
-  console.log(e.latlng);
+map.on('click', function(e) {
+   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map);
 });
 
 // loadData();

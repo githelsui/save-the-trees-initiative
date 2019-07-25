@@ -17,18 +17,19 @@ class MainPage(webapp2.RequestHandler):
         self.response.write(map_template.render())
         my_user = users.get_current_user()
         # user = users.get_current_user()
-        # if user:
-        #     nickname = user.nickname()
-        #     logout_url = users.create_logout_url('/')
-        #     greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
-        #         nickname, logout_url)
-        # else:
-        #     login_url = users.create_login_url('/')
+        if my_user:
+            logout_url = users.create_logout_url('/')
+            self.response.write(map_template.render())
+            # greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
+            #     nickname, logout_url)
+        else:
+            login_url = users.create_login_url('/')
+            self.redirect('/login')
         #     greeting = '<a href="{}">Sign in</a>'.format(login_url)
         # self.response.write(
         #     '<html><body>{}</body></html>'.format(greeting))
 
-class InfoPage(webapp2.RequestHandler):
+class LoginPage(webapp2.RequestHandler):
     def get(self):
         map_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
         self.response.write(map_template.render())
@@ -85,5 +86,5 @@ class InfoPage(webapp2.RequestHandler):
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/info', InfoPage)
+    ('/login', LoginPage)
 ], debug=True)
