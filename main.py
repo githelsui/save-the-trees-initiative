@@ -15,7 +15,6 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
         self.response.write(map_template.render())
-
         my_user = users.get_current_user()
         # user = users.get_current_user()
         # if user:
@@ -33,8 +32,9 @@ class InfoPage(webapp2.RequestHandler):
     def get(self):
         map_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
         self.response.write(map_template.render())
-
         my_user = users.get_current_user()
+
+
 # class EditInfo(webapp2.RequestHandler):
 #     def get(self):
 #         key_string = self.request.get('key')
