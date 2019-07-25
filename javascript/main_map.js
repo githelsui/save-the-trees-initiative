@@ -1,4 +1,6 @@
-const likeBtn = document.querySelector("#like");
+const sidecounter = document.querySelector(".sidebar");
+let treeslist = new Array();
+let numTrees = 0;
 
 const treeicn = L.icon({
     iconUrl: 'https://img.icons8.com/color/52/000000/deciduous-tree.png',
@@ -23,6 +25,8 @@ L.tileLayer(
 map.on('click', function(e) {
    L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map);
    console.log(e);
+   numTrees++;
+
 });
 
 // loadData();
