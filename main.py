@@ -35,6 +35,7 @@ class MainPage(webapp2.RequestHandler):
             self.redirect('/login')
 
 
+
 class LoginPage(webapp2.RequestHandler):
     def get(self):
         login_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
