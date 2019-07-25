@@ -29,7 +29,7 @@ class LoginPage(webapp2.RequestHandler):
     def get(self):
         login_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
         my_user = users.get_current_user()
-        login_url = users.create_login_url('/')
+        login_url = users.create_login_url('/login')
         self.response.write( login_template.render( {'loginurl': login_url} )  )
 
     def post(self):
