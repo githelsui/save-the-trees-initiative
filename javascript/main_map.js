@@ -23,7 +23,8 @@ L.tileLayer(
     }).addTo(map);
 
 map.on('click', function(e) {
-   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map);
+   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
    console.log(e);
    numTrees++;
    fetch("/tree", {
