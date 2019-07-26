@@ -61,9 +61,10 @@
         text.innerHTML = "Tree #" + numTrees + ": djfksdj";
         listElement.appendChild(text);
         treecont.appendChild(listElement);
+
        fetch("/tree", {
          method: 'post',
-         body: JSON.stringify(e.latlng),
+         body: JSON.stringify(e.latlng, numTrees),
        });
     });
     </script>
