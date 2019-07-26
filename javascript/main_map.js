@@ -17,9 +17,10 @@ const treeicn = L.icon({
 const map = L.map('canvas').setView([33.99893452860995, -118.48341822624205], 14);
 mapLink =
     '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']}).addTo(map);
+    L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
 
 const addTree = (index, email, latlng) => {
   latlng.lat = parseFloat(latlng.lat.toFixed(5));
