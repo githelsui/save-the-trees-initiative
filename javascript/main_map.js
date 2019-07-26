@@ -26,7 +26,7 @@ L.tileLayer(
 map.on('click', function(e) {
    numTrees++;
    L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
-    .bindPopup("Planter: dfsdf" + "<br>Tree #" + numTrees);
+    .bindPopup("Planter: " + '{{email}}' + "<br>Tree #" + numTrees);
    console.log(e);
    fetch("/tree", {
      method: 'post',
