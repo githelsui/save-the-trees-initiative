@@ -23,6 +23,19 @@ L.tileLayer(
     maxZoom: 18,
     }).addTo(map);
 
+<<<<<<< HEAD
+=======
+map.on('click', function(e) {
+   numTrees++;
+   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
+    .bindPopup("Planter: " + '{{email}}' + "<br>Tree #" + numTrees);
+   console.log(e);
+   fetch("/tree", {
+     method: 'post',
+     body: JSON.stringify(e.latlng),
+   });
+});
+>>>>>>> d4be4a42db9c80533c69b71473a88472f11ba317
 //
 // const popUp = (email, marker) =>{
 //     marker.bindPopup(email + "\n Tree #" + numTrees);
