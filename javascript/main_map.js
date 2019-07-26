@@ -1,4 +1,5 @@
-const sidecounter = document.querySelector(".sidebar");
+const sidebar = document.querySelector(".sidebar");
+const treecont = document.querySelector(".tree-container");
 let treeslist = new Array();
 let numTrees = 0;
 
@@ -23,10 +24,10 @@ L.tileLayer(
     }).addTo(map);
 
 map.on('click', function(e) {
+   numTrees++;
    L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
     .bindPopup("Planter: dfsdf" + "<br>Tree #" + numTrees);
    console.log(e);
-   numTrees++;
    fetch("/tree", {
      method: 'post',
      body: JSON.stringify(e.latlng),
