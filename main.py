@@ -45,8 +45,9 @@ class LoginPage(webapp2.RequestHandler):
 class TreeHandler(webapp2.RequestHandler):
     def post(self):
         data = json.loads(self.request.body)
-        m_lat = data["lat"]
-        m_lng = data["lng"]
+        latlng = data["coordinates"]
+        m_lat = latlng["lat"]
+        m_lng = latlng["lng"]
         number = data["number"]
         my_user = users.get_current_user()
         my_userid = my_user.user_id()
