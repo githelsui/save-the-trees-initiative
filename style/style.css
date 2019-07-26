@@ -50,7 +50,6 @@ p{
 h1, h2{
   margin-top:0px;
   margin-bottom: 0px;
-  font-size: 30px;
 	padding: 10px;
   font-family: "Poppins";
    /* text-shadow: 2px 2px black; */
@@ -58,6 +57,7 @@ h1, h2{
 
 h1{
 	font-style: oblique;
+	font-size: 10px;
 }
 
 h2{

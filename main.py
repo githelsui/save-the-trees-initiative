@@ -19,11 +19,14 @@ class MainPage(webapp2.RequestHandler):
         my_user = users.get_current_user()
         if my_user == None:
             self.redirect('/login')
-
-        logout_url = users.create_logout_url('/')
-        trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
-        dict_for_template = {'trees': trees}
-        self.response.write(map_template.render(dict_for_template))
+        else:
+            logout_url = users.create_logout_url('/')
+            trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
+            dict_for_template = {
+                'email': my_user.nickname(),
+                'trees': trees
+                }
+            self.response.write(map_template.render(dict_for_template))
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
@@ -45,7 +48,8 @@ class TreeHandler(webapp2.RequestHandler):
         m_lng = data["lng"]
         my_user = users.get_current_user()
         my_userid = my_user.user_id()
-        tree = Tree(lat=m_lat, long=m_lng, user_id=my_userid)
+        m_email = my_user.email()
+        tree = Tree(lat=m_lat, long=m_lng, user_id=my_userid, email=m_email)
         tree.put()
 # the app configuration section
 app = webapp2.WSGIApplication([

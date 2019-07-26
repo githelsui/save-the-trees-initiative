@@ -23,38 +23,18 @@ L.tileLayer(
     }).addTo(map);
 
 map.on('click', function(e) {
-   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map);
    console.log(e);
    numTrees++;
    fetch("/tree", {
      method: 'post',
      body: JSON.stringify(e.latlng),
    });
+   pop
 });
 
-// loadData();
 
-// function loadData(all){
-//   for each(marker in all){
-//     L.marker(marker).addTo(map)
-//   }
-// }
 
-function saveData(){
-  var allMarkers = getAllMarkers();
-  saveMarkers(allMarkers);
-  //calls method on the web
-}
-
-function getAllMarkers(){
-  var allMarkers = [];
-  map.eachLayer(function (layer){
-    if(layer.options.icon != undefined){
-      allMarkers.add(layer.latlng);
-      allMarkers.push({
-        markerId: layer.options.markerId
-      });
-    }
-  })
-}
+const popUp = (email, marker) =>{
+    marker.bindPopup(email + "\n Tree #" + numTrees);
+};
