@@ -15,18 +15,17 @@ const treeicn = L.icon({
 });
 
 const map = L.map('canvas').setView([33.99893452860995, -118.48341822624205], 14);
+mapLink =
+    '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+}).addTo(map);
 
 const addTree = (index, email, latlng) => {
   latlng.lat = parseFloat(latlng.lat.toFixed(5));
   latlng.lng = parseFloat(latlng.lng.toFixed(5));
   console.log(latlng);
-  mapLink =
-      '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-  L.tileLayer(
-      'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; ' + mapLink + ' Contributors',
-      maxZoom: 18,
-      }).addTo(map);
 
       L.marker( latlng, {icon: treeicn} ).addTo(map)
        .bindPopup("Planter: " + email + "<br>Tree #" + index);
@@ -34,7 +33,7 @@ const addTree = (index, email, latlng) => {
        var listElement = document.createElement("div");
        listElement.className += "tree-obj";
        var text = document.createElement("p");
-       text.innerHTML = "Tree #" + index + ": " + email + ": [" + latlng.lat + " , " + latlng.lng + "]";
+       text.innerHTML = "Tree #" + index + ": [" + latlng.lat + " , " + latlng.lng + "]";
        listElement.appendChild(text);
        treecont.appendChild(listElement);
        numTrees = index;
