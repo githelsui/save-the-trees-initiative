@@ -24,9 +24,16 @@ class MainPage(webapp2.RequestHandler):
             trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
             dict_for_template = {
                 'email': my_user.nickname(),
-                'trees': trees
+                'trees': trees,
+                'logouturl': logout_url
                 }
             self.response.write(map_template.render(dict_for_template))
+
+    def post(self):
+        map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
+        my_user = users.get_current_user()
+        logout_url = users.create_logout_url('/')
+        self.response.write( logout_template.render( {'logouturl': logout_url} )  )
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
