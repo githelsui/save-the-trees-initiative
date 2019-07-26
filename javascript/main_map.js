@@ -1,4 +1,5 @@
-const sidecounter = document.querySelector(".sidebar");
+const sidebar = document.querySelector(".sidebar");
+const treecont = document.querySelector(".tree-container");
 let treeslist = new Array();
 let numTrees = 0;
 

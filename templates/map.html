@@ -14,7 +14,7 @@
         <h1>{{email}}</h1>
         <h2>Trees you've saved:</h2>
           <div class="tree-container">
-            <div class="tree-obj">
+            <!-- <div class="tree-obj">
               <p>Tree #1: 90392, 32930</p>
             </div>
             <div class="tree-obj">
@@ -28,9 +28,9 @@
             </div>
             <div class="tree-obj">
               <p>Tree #1: 90392, 32930</p>
-            </div>
+            </div> -->
           </div>
-          <button type="submit" onclick="window.location.href = '{{loginurl}}'">Log Out</button>
+          <button type="submit" onclick="window.location.href = '{{logouturl}}'">Log Out</button>
       </div>
   </div>
 
@@ -40,6 +40,13 @@
     <script>
     L.marker( [{{tree.lat}}, {{tree.long}}], {icon: treeicn} ).addTo(map)
      .bindPopup("Planter: dfsdf" + "<br>Tree #" + numTrees);
+     // add elements to the sidebar treeslist
+     var listElement = document.createElement("div");
+     listElement.className += "tree-obj";
+     var text = document.createElement("p");
+     text.innerHTML = "Tree #" + numTrees + ": djfksdj";
+     listElement.appendChild(text);
+     treecont.appendChild(listElement);
     </script>
     {% endfor %}
 

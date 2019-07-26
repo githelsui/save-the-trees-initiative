@@ -24,18 +24,13 @@ class MainPage(webapp2.RequestHandler):
             trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
             dict_for_template = {
                 'email': my_user.nickname(),
-                'trees': trees
+                'trees': trees,
+                'logouturl': logout_url
                 }
             self.response.write(map_template.render(dict_for_template))
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
-        login_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
-        my_user = users.get_current_user()
-        login_url = users.create_login_url('/')
-        self.response.write( login_template.render( {'loginurl': login_url} )  )
-
-    def post(self):
         login_template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
         my_user = users.get_current_user()
         login_url = users.create_login_url('/')
