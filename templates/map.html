@@ -54,7 +54,7 @@
     map.on('click', function(e) {
        numTrees++;
        L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
-        .bindPopup("Planter: {{email}}" + "<br>Tree #" + numTrees);
+        .bindPopup("Planter: " + '{{email}}' + "<br>Tree #" + numTrees);
         var listElement = document.createElement("div");
         listElement.className += "tree-obj";
         var text = document.createElement("p");
