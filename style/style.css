@@ -17,7 +17,8 @@ body, html {
 	overflow: auto;
   background-color: white;
 	width: 100%;
-	border-radius: 0px;
+	padding: 5px;
+	border-radius: 30px;
 	height:50%;
 }
 
@@ -35,7 +36,7 @@ p{
 	background-color: #5B9F2B;
 	height:100%;
 	float: right;
-	/* border-left: solid white 2px; */
+	/* border-left: solid white 5px; */
   color: white;
 	width:20%;
 }
@@ -58,7 +59,7 @@ h1, h2{
 
 h1{
 	font-style: oblique;
-	font-size: 10px;
+	font-size: 15px;
 }
 
 h2{
@@ -82,5 +83,5 @@ text-decoration: none;
 button:hover {
 background-color: rgba(255, 255, 255, 0.1);
 border-color: rgba(255, 255, 255, 1);
-color: black;
+color: white;
 }

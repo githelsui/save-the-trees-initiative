@@ -19,8 +19,7 @@ mapLink =
     '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
     maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-}).addTo(map);
+    subdomains:['mt0','mt1','mt2','mt3']}).addTo(map);
 
 const addTree = (index, email, latlng) => {
   latlng.lat = parseFloat(latlng.lat.toFixed(5));
@@ -38,9 +37,3 @@ const addTree = (index, email, latlng) => {
        treecont.appendChild(listElement);
        numTrees = index;
 }
-
-
-//
-// const popUp = (email, marker) =>{
-//     marker.bindPopup(email + "\n Tree #" + numTrees);
-// };
