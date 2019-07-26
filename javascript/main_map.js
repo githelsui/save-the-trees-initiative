@@ -28,7 +28,7 @@ const addTree = (index, email, latlng) => {
   console.log(latlng);
 
       L.marker( latlng, {icon: treeicn} ).addTo(map)
-       .bindPopup("Planter: " + email + "<br>Tree #" + index);
+       .bindPopup("Planter: " + email + "<br><center>Tree #" + index + "</center>");
        // add elements to the sidebar treeslist
        const headerElements = document.getElementsByClassName("tree-container");
        var listElement = document.createElement("div");

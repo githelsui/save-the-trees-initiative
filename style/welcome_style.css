@@ -50,7 +50,7 @@ body, html {
   cursor: pointer;
   border: 1px solid white;
   text-decoration: none;
-  animation: fadeIn 5s;
+  /* animation: fadeIn 5s; */
 }
   button:hover {
   background-color: #487855;
@@ -68,14 +68,14 @@ h1{
   font-size: 80px;
   font-family: "Barlow", sans-serif;
   text-shadow: 2px 2px black;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
 }
 
 h2{
   margin-bottom: 10px;
   display: inline;
   font-family: "Barlow", sans-serif;
-  animation: fadeIn 5s;
+  animation: fadeIn 2s;
 }
 
 @keyframes fadeIn {
