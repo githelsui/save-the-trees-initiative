@@ -39,7 +39,7 @@
     {% for tree in trees %}
     <script>
     L.marker( [{{tree.lat}}, {{tree.long}}], {icon: treeicn} ).addTo(map)
-     .bindPopup("Planter: dfsdf" + "<br>Tree #" + numTrees);
+     .bindPopup("Planter: " + '{{email}}' + "<br>Tree #" + numTrees);
      // add elements to the sidebar treeslist
      var listElement = document.createElement("div");
      listElement.className += "tree-obj";
