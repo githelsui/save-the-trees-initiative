@@ -44,11 +44,29 @@
      var listElement = document.createElement("div");
      listElement.className += "tree-obj";
      var text = document.createElement("p");
-     text.innerHTML = "Tree #" + numTrees + ": djfksdj";
+     text.innerHTML = "Tree #" + numTrees + ": [ {{tree.lat}} , {{tree.long}} ]";
      listElement.appendChild(text);
      treecont.appendChild(listElement);
     </script>
     {% endfor %}
+
+    <script>
+    map.on('click', function(e) {
+       numTrees++;
+       L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
+        .bindPopup("Planter: dfsdf" + "<br>Tree #" + numTrees);
+        var listElement = document.createElement("div");
+        listElement.className += "tree-obj";
+        var text = document.createElement("p");
+        text.innerHTML = "Tree #" + numTrees + ": djfksdj";
+        listElement.appendChild(text);
+        treecont.appendChild(listElement);
+       fetch("/tree", {
+         method: 'post',
+         body: JSON.stringify(e.latlng),
+       });
+    });
+    </script>
 
 </body>
 </html>
