@@ -50,11 +50,16 @@ body, html {
   cursor: pointer;
   border: 1px solid white;
   text-decoration: none;
+  animation: fadeIn 5s;
 }
   button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #487855;
   border-color: rgba(255, 255, 255, 1);
   color: white;
+  -webkit-animation: swing 1s ease;
+        animation: swing 1s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
 }
 
 h1{
@@ -62,11 +67,76 @@ h1{
   margin-bottom: 0px;
   font-size: 80px;
   font-family: "Barlow", sans-serif;
-   text-shadow: 2px 2px black;
+  text-shadow: 2px 2px black;
+  animation: fadeIn 5s;
 }
 
 h2{
   margin-bottom: 10px;
   display: inline;
   font-family: "Barlow", sans-serif;
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes swing{
+    15%{
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%{
+        -webkit-transform: translateX(-5px);
+       transform: translateX(-5px);
+    }
+    50%{
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+      }
+    65%{
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%{
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%{
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes swing{
+    15%{
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%{
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%{
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%{
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%{
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%{
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
 }

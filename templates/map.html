@@ -44,6 +44,7 @@
     map.on('click', function(e) {
        numTrees++;
        addTree(numTrees, userEmail, e.latlng);
+       updateTree(numTrees);
        const treeData = {
           'coordinates': e.latlng,
           'number': numTrees

@@ -38,11 +38,6 @@ const addTree = (index, email, latlng) => {
        listElement.appendChild(text);
        treecont.appendChild(listElement);
        numTrees = index;
-       var side = document.getElementById("tree-container");   // Get the <ul> element with id="myList"
-       if(numTrees == 1){
-         side.removeChild(side.childNodes[0]);
-         alert(side.childNodes.length);
-       }
 }
 
 const addOtherTree = (email, latlng) => {
@@ -53,6 +48,13 @@ const addOtherTree = (email, latlng) => {
       L.marker( latlng, {icon: treeicn} ).addTo(map)
        .bindPopup("Planter: " + email);
        // add elements to the sidebar treeslist
+}
+
+const updateTree = (size) =>{
+  var side = document.getElementById("tree-container");   // Get the <ul> element with id="myList"
+  if(size == 1){
+    side.removeChild(side.childNodes[0]);
+  }
 }
 
 const ifNoTrees = (size) => {
