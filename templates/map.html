@@ -10,7 +10,7 @@
   <div class="container">
       <div id="canvas"></div>
       <div class="sidebar">
-        <img src="https://img.icons8.com/pastel-glyph/64/000000/hand-planting.png">
+        <img src="https://img.icons8.com/pastel-glyph/64/ffffff/hand-planting.png">
         <h1>{{email}}</h1>
         <h2>Trees you've saved:</h2>
           <div class="tree-container">
@@ -37,7 +37,8 @@
     <script src="javascript/main_map.js"></script>
     {% for tree in trees %}
     <script>
-    L.marker( [{{tree.lat}}, {{tree.long}}], {icon: treeicn} ).addTo(map);
+    L.marker( [{{tree.lat}}, {{tree.long}}], {icon: treeicn} ).addTo(map)
+     .bindPopup("Planter: dfsdf" + "<br>Tree #" + numTrees);
     </script>
     {% endfor %}
 
