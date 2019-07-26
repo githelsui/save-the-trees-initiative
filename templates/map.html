@@ -13,35 +13,22 @@
         <img src="https://img.icons8.com/pastel-glyph/64/ffffff/hand-planting.png">
         <h1>{{email}}</h1>
         <h2>Trees you've saved:</h2>
-          <div class="tree-container">
-            <!-- <div class="tree-obj">
-              <p>Tree #1: 90392, 32930</p>
-            </div>
-            <div class="tree-obj">
-              <p>Tree #1: 90392, 32930</p>
-            </div>
-            <div class="tree-obj">
-              <p>Tree #1: 90392, 32930</p>
-            </div>
-            <div class="tree-obj">
-              <p>Tree #1: 90392, 32930</p>
-            </div>
-            <div class="tree-obj">
-              <p>Tree #1: 90392, 32930</p>
-            </div> -->
-          </div>
+          <div class="tree-container"></div>
           <button type="submit" onclick="window.location.href = '{{logouturl}}'">Log Out</button>
       </div>
   </div>
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
     <script src="javascript/main_map.js"></script>
+
     <script>
     const userEmail = "{{email}}";
     {% for tree in trees %}
     addTree({{loop.index}}, userEmail, L.latLng({{tree.lat}}, {{tree.long}}));
     {% endfor %}
-
+    {% for tree in othertrees %}
+    addOtherTree("{{tree.email}}", L.latLng({{tree.lat}}, {{tree.long}}));
+    {% endfor %}
     </script>
 
     <script>

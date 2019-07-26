@@ -22,9 +22,11 @@ class MainPage(webapp2.RequestHandler):
         else:
             logout_url = users.create_logout_url('/')
             trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
+            othertrees = Tree.query().filter(Tree.user_id != my_user.user_id()).fetch()
             dict_for_template = {
                 'email': my_user.nickname(),
                 'trees': trees,
+                'othertrees':othertrees,
                 'logouturl': logout_url
                 }
             self.response.write(map_template.render(dict_for_template))
@@ -51,7 +53,7 @@ class TreeHandler(webapp2.RequestHandler):
         number = data["number"]
         my_user = users.get_current_user()
         my_userid = my_user.user_id()
-        m_email = my_user.email()
+        m_email = my_user.nickname()
         tree = Tree(lat=m_lat, long=m_lng, number=number, user_id=my_userid, email=m_email)
         tree.put()
 # the app configuration section

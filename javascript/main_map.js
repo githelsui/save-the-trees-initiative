@@ -29,6 +29,7 @@ const addTree = (index, email, latlng) => {
       L.marker( latlng, {icon: treeicn} ).addTo(map)
        .bindPopup("Planter: " + email + "<br>Tree #" + index);
        // add elements to the sidebar treeslist
+       const headerElements = document.getElementsByClassName("tree-container");
        var listElement = document.createElement("div");
        listElement.className += "tree-obj";
        var text = document.createElement("p");
@@ -36,4 +37,14 @@ const addTree = (index, email, latlng) => {
        listElement.appendChild(text);
        treecont.appendChild(listElement);
        numTrees = index;
+}
+
+const addOtherTree = (email, latlng) => {
+  latlng.lat = parseFloat(latlng.lat.toFixed(5));
+  latlng.lng = parseFloat(latlng.lng.toFixed(5));
+  console.log(latlng);
+
+      L.marker( latlng, {icon: treeicn} ).addTo(map)
+       .bindPopup("Planter: " + email);
+       // add elements to the sidebar treeslist
 }
