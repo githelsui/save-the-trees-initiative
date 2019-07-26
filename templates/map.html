@@ -17,11 +17,11 @@
 <body>
   <div class="container">
       <div id="canvas"></div>
-      <div class="sidebar">
+      <div class="sidebar" id="sidebar">
         <img src="https://img.icons8.com/pastel-glyph/64/ffffff/hand-planting.png">
         <h1>{{email}}</h1>
         <h2>Trees you've saved:</h2>
-          <div class="tree-container"></div>
+          <div class="tree-container" id="tree-container"></div>
           <button type="submit" onclick="window.location.href = '{{logouturl}}'">Log Out</button>
       </div>
   </div>
@@ -34,6 +34,7 @@
     {% for tree in trees %}
     addTree({{loop.index}}, userEmail, L.latLng({{tree.lat}}, {{tree.long}}));
     {% endfor %}
+      ifNoTrees({{trees|length}});
     {% for tree in othertrees %}
     addOtherTree("{{tree.email}}", L.latLng({{tree.lat}}, {{tree.long}}));
     {% endfor %}

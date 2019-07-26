@@ -70,25 +70,3 @@ h2{
   display: inline;
   font-family: "Barlow", sans-serif;
 }
-
-.meme_top_line {
-	position: absolute;
-	top: 0;
-}
-
-.meme_middle_line {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.meme_bottom_line {
-	position: absolute;
-	bottom: 0;
-}
-
-.meme_image {
-	max-width: 300px;
-	max-height: 300px;
-}
