@@ -14,14 +14,32 @@ const treeicn = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var map = L.map('canvas').setView([33.99893452860995, -118.48341822624205], 14);
-mapLink =
-    '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-L.tileLayer(
-    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; ' + mapLink + ' Contributors',
-    maxZoom: 18,
-    }).addTo(map);
+const map = L.map('canvas').setView([33.99893452860995, -118.48341822624205], 14);
+
+const addTree = (index, email, latlng) => {
+  latlng.lat = parseFloat(latlng.lat.toFixed(5));
+  latlng.lng = parseFloat(latlng.lng.toFixed(5));
+  console.log(latlng);
+  mapLink =
+      '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+  L.tileLayer(
+      'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; ' + mapLink + ' Contributors',
+      maxZoom: 18,
+      }).addTo(map);
+
+      L.marker( latlng, {icon: treeicn} ).addTo(map)
+       .bindPopup("Planter: " + email + "<br>Tree #" + index);
+       // add elements to the sidebar treeslist
+       var listElement = document.createElement("div");
+       listElement.className += "tree-obj";
+       var text = document.createElement("p");
+       text.innerHTML = "Tree #" + index + ": " + email + ": [" + latlng.lat + " , " + latlng.lng + "]";
+       listElement.appendChild(text);
+       treecont.appendChild(listElement);
+       numTrees = index;
+}
+
 
 //
 // const popUp = (email, marker) =>{

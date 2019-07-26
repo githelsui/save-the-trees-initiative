@@ -36,32 +36,19 @@
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
     <script src="javascript/main_map.js"></script>
-    {% for tree in trees %}
     <script>
-    L.marker( [{{tree.lat}}, {{tree.long}}], {icon: treeicn} ).addTo(map)
-     .bindPopup("Planter: " + '{{email}}' + "<br>Tree #" + numTrees);
-     // add elements to the sidebar treeslist
-     var listElement = document.createElement("div");
-     listElement.className += "tree-obj";
-     var text = document.createElement("p");
-     text.innerHTML = "Tree #" + numTrees + ": " + '{{email}}' + ": [ {{tree.lat}}, {{tree.long}} ]";
-     listElement.appendChild(text);
-     treecont.appendChild(listElement);
-    </script>
+    const userEmail = "{{email}}";
+    {% for tree in trees %}
+    addTree({{loop.index}}, userEmail, L.latLng({{tree.lat}}, {{tree.long}}));
     {% endfor %}
+
+    </script>
 
     <script>
     map.on('click', function(e) {
        numTrees++;
-       L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
-        .bindPopup("Planter: " + '{{email}}' + "<br>Tree #" + numTrees);
-        var listElement = document.createElement("div");
-        listElement.className += "tree-obj";
-        var text = document.createElement("p");
-        text.innerHTML = "Tree #" + numTrees + ": djfksdj";
-        listElement.appendChild(text);
-        treecont.appendChild(listElement);
-        const treeData = {
+       addTree(numTrees, userEmail, e.latlng);
+       const treeData = {
           'coordinates': e.latlng,
           'number': numTrees
         }
