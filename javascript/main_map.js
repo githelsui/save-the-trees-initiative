@@ -23,18 +23,16 @@ L.tileLayer(
     }).addTo(map);
 
 map.on('click', function(e) {
-   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map);
+   L.marker(e.latlng, {icon: treeicn, draggable: true, markerId: 9999}).addTo(map)
+    .bindPopup("Planter: dfsdf" + "<br>Tree #" + numTrees);
    console.log(e);
    numTrees++;
    fetch("/tree", {
      method: 'post',
      body: JSON.stringify(e.latlng),
    });
-   pop
 });
-
-
-
-const popUp = (email, marker) =>{
-    marker.bindPopup(email + "\n Tree #" + numTrees);
-};
+//
+// const popUp = (email, marker) =>{
+//     marker.bindPopup(email + "\n Tree #" + numTrees);
+// };
