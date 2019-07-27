@@ -6,3 +6,4 @@ class Tree(ndb.Model):
     number = ndb.FloatProperty(required=True)
     user_id = ndb.StringProperty(required=True)
     email = ndb.StringProperty(required=True)
+    date = ndb.StringProperty(required=True)

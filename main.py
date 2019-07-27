@@ -51,10 +51,11 @@ class TreeHandler(webapp2.RequestHandler):
         m_lat = latlng["lat"]
         m_lng = latlng["lng"]
         number = data["number"]
+        date = data['date']
         my_user = users.get_current_user()
         my_userid = my_user.user_id()
         m_email = my_user.nickname()
-        tree = Tree(lat=m_lat, long=m_lng, number=number, user_id=my_userid, email=m_email)
+        tree = Tree(lat=m_lat, long=m_lng, number=number, user_id=my_userid, email=m_email, date=date)
         tree.put()
 # the app configuration section
 app = webapp2.WSGIApplication([

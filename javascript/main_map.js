@@ -1,6 +1,7 @@
 const sidebar = document.querySelector(".sidebar");
 const treecont = document.querySelector(".tree-container");
 let treeslist = new Array();
+let myemail = "";
 let numTrees = 0;
 
 const treeicn = L.icon({
@@ -28,13 +29,14 @@ const addTree = (index, email, latlng) => {
   console.log(latlng);
 
       L.marker( latlng, {icon: treeicn} ).addTo(map)
-       .bindPopup("Planter: " + email + "<br><center>Tree #" + index + "</center>");
+       .bindPopup("Planted by " + email + "<br><center>on " + currDate() + "<br>Tree #" + index + "</center>");
        // add elements to the sidebar treeslist
        const headerElements = document.getElementsByClassName("tree-container");
        var listElement = document.createElement("div");
        listElement.className += "tree-obj";
        var text = document.createElement("p");
-       text.innerHTML = "Tree #" + index + ": [" + latlng.lat + " , " + latlng.lng + "]";
+       text.innerHTML = "Tree #" + index + ": [" + latlng.lat + " , " + latlng.lng + "]" +
+                          "<br>on " + currDate();
        listElement.appendChild(text);
        treecont.appendChild(listElement);
        numTrees = index;
@@ -46,7 +48,7 @@ const addOtherTree = (email, latlng) => {
   console.log(latlng);
 
       L.marker( latlng, {icon: treeicn} ).addTo(map)
-       .bindPopup("Planter: " + email);
+       .bindPopup("Planted by " + email + "<br><center>on " + currDate());
        // add elements to the sidebar treeslist
 }
 
@@ -67,5 +69,33 @@ const ifNoTrees = (size) => {
     listElement.appendChild(text);
     side.appendChild(listElement);
   }
-
 }
+
+const currDate = () => {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  return mm + '/' + dd + '/' + yyyy;
+  }
+
+const setCurrEmail = (email) => {
+  myemail = email;
+  }
+
+map.on('click', function(e) {
+   numTrees++;
+   addTree(numTrees, myemail, e.latlng);
+   updateTree(numTrees);
+   var mydate = currDate();
+   const treeData = {
+      'coordinates': e.latlng,
+      'number': numTrees,
+      'date': mydate,
+    }
+   fetch("/tree", {
+     method: 'post',
+     body: JSON.stringify(treeData),
+   });
+});
