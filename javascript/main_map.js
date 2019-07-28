@@ -42,6 +42,7 @@ const addToMySide = (index, email, latlng) => {
   var listElement = document.createElement("div");
   listElement.className += "tree-obj";
   var text = document.createElement("p");
+  text.className += "tree-font";
   text.innerHTML = "Tree #" + index + ": [" + latlng.lat + " , " + latlng.lng + "]" +
                      "<br>on " + currDate();
   listElement.appendChild(text);
@@ -55,7 +56,7 @@ const addToLeaderboard = (index, username, num) => {
     boardElement.className += "tree-obj";
     var text = document.createElement("p");
     text.className += "leaderboard-font";
-    text.innerHTML = "#" + index + ":\xa0\xa0\xa0" + username + "\xa0\xa0\xa0 " + num + " trees";
+    text.innerHTML = "#" + index + ":\xa0\xa0\xa0" + username + "\xa0\xa0\xa0 " + num + " Trees";
     boardElement.appendChild(text);
     leaderboard.appendChild(boardElement);
   }

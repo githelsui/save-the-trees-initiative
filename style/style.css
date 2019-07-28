@@ -21,17 +21,20 @@ body, html {
 		width: 80%;
 	}
 
-.tree-container{
+.tree-container, .leaderboard-container{
 	margin-top:5px;
+	/* margin: 10px; */
 	overflow: auto;
+	text-align: center;
   background-color: white;
 	width: 100%;
 	padding: 5px;
+	float: 	center;
 	border-radius: 30px;
 	height:60%;
 }
 
-.leaderboard-container{
+/* .leaderboard-container{
 	margin-top:5px;
 	overflow: auto;
   background-color: white;
@@ -39,7 +42,7 @@ body, html {
 	padding: 5px;
 	border-radius: 30px;
 	height:60%;
-}
+} */
 
 p{
 	margin-top:0px;
@@ -60,9 +63,17 @@ p{
 	width:30%;
 }
 
+.tree-font, .leaderboard-font{
+	border: 1px solid gray;
+	border-radius: 30px;
+	margin: 3px;
+	margin-bottom: 15px;
+}
+
 .leaderboard-font{
 	font-weight: bold;
-	font-size: 22px;
+	font-size: 20px;
+	border: 1px solid black;
 }
 
 #m-logo{
