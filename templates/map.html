@@ -17,6 +17,7 @@
           <div id="myDropdown" class="dropdown-content">
             <a href="/">Home</a>
             <a href="/community">Community Leaderboard</a>
+            <a href="/about">About</a>
           </div>
         </div>
         <h1 id="m-email">{{email}}</h1>
@@ -44,6 +45,10 @@
       {% for value in planters %}
         addToLeaderboard({{loop.index}}, "{{value[0]}}", {{value[1]}});
       {% endfor %}
+    {% endif %}
+
+    {% if loadmytrees == 'about' %}
+      makeAboutPage()
     {% endif %}
 
     </script>

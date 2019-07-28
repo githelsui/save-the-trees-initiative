@@ -73,22 +73,12 @@ class CommunityHandler(webapp2.RequestHandler):
         else:
             logout_url = users.create_logout_url('/')
             alltrees = Tree.query().fetch()
-
             trees_per_user = {}
-            # {'gith': 8,
-            # 'gith': 9,
-            # 'sam': 10}
             for tree in alltrees:
                 if tree.email not in trees_per_user:
                     trees_per_user[tree.email] = tree.number #adds email key only once
                 elif tree.number > trees_per_user[tree.email]: #swaps key's value if greater than
                     trees_per_user[tree.email] = tree.number
-
-
-            # for key, value in trees_per_user.iteritems():
-            #     if key
-
-
             trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
             othertrees = Tree.query().filter(Tree.user_id != my_user.user_id()).fetch()
             dict_for_template = {
@@ -103,10 +93,32 @@ class CommunityHandler(webapp2.RequestHandler):
                 }
             self.response.write(map_template.render(dict_for_template))
 
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        map_template = JINJA_ENVIRONMENT.get_template('templates/map.html')
+        my_user = users.get_current_user()
+        if my_user == None:
+            self.redirect('/login')
+        else:
+            logout_url = users.create_logout_url('/')
+            trees = Tree.query().filter(Tree.user_id == my_user.user_id()).fetch()
+            othertrees = Tree.query().filter(Tree.user_id != my_user.user_id()).fetch()
+            dict_for_template = {
+                'email': my_user.nickname(),
+                'trees': trees,
+                'othertrees':othertrees,
+                'loadmytrees': "about",
+                'containertype': "about-container",
+                'headermessage': "Save the Trees Initiative",
+                'logouturl': logout_url,
+                }
+            self.response.write(map_template.render(dict_for_template))
+
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/login', LoginPage),
     ('/tree', TreeHandler),
     ('/community', CommunityHandler),
+    ('/about', AboutHandler)
 ], debug=True)

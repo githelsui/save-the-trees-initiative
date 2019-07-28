@@ -21,7 +21,7 @@ body, html {
 		width: 80%;
 	}
 
-.tree-container, .leaderboard-container{
+.tree-container, .leaderboard-container, .about-container{
 	margin-top:5px;
 	/* margin: 10px; */
 	overflow: auto;
@@ -34,15 +34,10 @@ body, html {
 	height:60%;
 }
 
-/* .leaderboard-container{
-	margin-top:5px;
-	overflow: auto;
-  background-color: white;
-	width: 100%;
-	padding: 5px;
-	border-radius: 30px;
-	height:60%;
-} */
+.instructions{
+	font-weight: bold;
+	font-size: 15px;
+}
 
 p{
 	margin-top:0px;
@@ -63,7 +58,7 @@ p{
 	width:30%;
 }
 
-.tree-font, .leaderboard-font{
+.tree-font, .leaderboard-font, .myrank, .instructions{
 	border: 1px solid gray;
 	border-radius: 30px;
 	margin: 3px;
@@ -71,6 +66,15 @@ p{
 }
 
 .leaderboard-font{
+	font-weight: bold;
+	font-size: 20px;
+	border: 1px solid black;
+}
+
+.myrank{
+	background-color: #9ec781;
+	border-color: black;
+	color: white;
 	font-weight: bold;
 	font-size: 20px;
 	border: 1px solid black;

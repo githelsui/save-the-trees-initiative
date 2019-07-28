@@ -21,6 +21,11 @@ body, html {
   display: flex;
 }
 
+#question{
+  font-size: 50px;
+  margin: 15px;
+}
+
 #welcome {
   margin: 0;
     height: 100%;
@@ -43,6 +48,7 @@ body, html {
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   border-radius: 25px;
+  margin: 15px;
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.7);
   color: white;
@@ -75,7 +81,9 @@ h2{
   margin-bottom: 10px;
   display: inline;
   font-family: "Barlow", sans-serif;
+    text-shadow: 2px 2px black;
   animation: fadeIn 2s;
+  font-style: italic;
 }
 
 @keyframes fadeIn {

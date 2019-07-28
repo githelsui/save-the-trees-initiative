@@ -1,6 +1,7 @@
 const sidebar = document.querySelector(".sidebar");
 const treecont = document.querySelector(".tree-container");
 const leaderboard = document.querySelector(".leaderboard-container");
+const about = document.querySelector(".about-container");
 let treeslist = new Array();
 let myemail = "";
 let numTrees = 0;
@@ -38,7 +39,6 @@ const addTree = (index, email, latlng, bool) => {
 const addToMySide = (index, email, latlng) => {
   latlng.lat = parseFloat(latlng.lat.toFixed(5));
   latlng.lng = parseFloat(latlng.lng.toFixed(5));
-  const headerElements = document.getElementsByClassName("tree-container");
   var listElement = document.createElement("div");
   listElement.className += "tree-obj";
   var text = document.createElement("p");
@@ -55,11 +55,38 @@ const addToLeaderboard = (index, username, num) => {
     var boardElement = document.createElement("div");
     boardElement.className += "tree-obj";
     var text = document.createElement("p");
-    text.className += "leaderboard-font";
+    if(username == myemail){
+      text.className += "myrank";
+    }
+    else{
+        text.className += "leaderboard-font";
+    }
     text.innerHTML = "#" + index + ":\xa0\xa0\xa0" + username + "\xa0\xa0\xa0 " + num + " Trees";
     boardElement.appendChild(text);
     leaderboard.appendChild(boardElement);
   }
+}
+
+const makeAboutPage = () => {
+    var boardElement1 = document.createElement("div");
+    boardElement1.className += "tree-obj";
+    var boardElement2 = document.createElement("div");
+    boardElement2.className += "tree-obj";
+    var boardElement3 = document.createElement("div");
+    boardElement3.className += "tree-obj";
+    var creators = document.createElement("p");
+    var instructions = document.createElement("p");
+    var github = document.createElement("p");
+    instructions.className += "instructions";
+    instructions.innerHTML = ("Instructions: <br> Plant a tree in real life and record your progress here on the map." + " Compare who's planted the most trees on the leaderboard!");
+    github.innerHTML = "Github Source Code: <br><a href='https://github.com/githelsui/save-the-trees-initiative' target='_blank'><img src='https://img.icons8.com/material-outlined/104/000000/github.png'></a>";
+    creators.innerHTML = "Created by Githel Lynn Suico, Eve Moshay, and Axel Sagundo.";
+    boardElement1.appendChild(creators);
+    boardElement2.appendChild(instructions);
+    boardElement3.appendChild(github);
+    about.appendChild(boardElement1);
+    about.appendChild(boardElement2);
+    about.appendChild(boardElement3);
 }
 
 const addOtherTree = (email, latlng) => {
