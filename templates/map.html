@@ -42,8 +42,8 @@
     {% endfor %}
 
     {% if loadmytrees == 'false' %}
-      {% for key, value in planters.items() %}
-        addToLeaderboard({{loop.index}}, "{{key}}", {{value}});
+      {% for value in planters %}
+        addToLeaderboard({{loop.index}}, "{{value[0]}}", {{value[1]}});
       {% endfor %}
     {% endif %}
 

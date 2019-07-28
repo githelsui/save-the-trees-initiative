@@ -99,7 +99,7 @@ class CommunityHandler(webapp2.RequestHandler):
                 'containertype': "leaderboard-container",
                 'headermessage': "Community Leaderboard",
                 'logouturl': logout_url,
-                'planters': trees_per_user
+                'planters': sorted(trees_per_user.items(), key=lambda x: x[1], reverse=True)
                 }
             self.response.write(map_template.render(dict_for_template))
 
