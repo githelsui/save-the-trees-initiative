@@ -1,3 +1,4 @@
-# Save The Trees Initiative (Project)
-files saved currently in this project are taken from meme generator lab (use code for reference)
-you can edit over these files to fit the needs of our project
+# Save The Trees Initiative (Google CSSI Project)
+
+## Instructions: 
+Plant a tree in real life and record your progress here on the map. Compare who's planted the most trees on the leaderboard!
