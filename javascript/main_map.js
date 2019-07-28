@@ -5,7 +5,7 @@ const about = document.querySelector(".about-container");
 let treeslist = new Array();
 let myemail = "";
 let numTrees = 0;
-let ifHomePage = "";
+let ifHomePage = "true";
 
 const treeicn = L.icon({
     iconUrl: 'https://img.icons8.com/color/52/000000/deciduous-tree.png',
