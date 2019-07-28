@@ -32,18 +32,18 @@
     {% for tree in trees %}
     addTree({{loop.index}}, userEmail, L.latLng({{tree.lat}}, {{tree.long}}), "{{loadmytrees}}");
     {% endfor %}
+    {% if loadmytrees == 'true' %}
       ifNoTrees({{trees|length}});
-      setCurrEmail(userEmail);
+    {% endif %}
+    setCurrEmail(userEmail);
     {% for tree in othertrees %}
     addOtherTree("{{tree.email}}", L.latLng({{tree.lat}}, {{tree.long}}));
     {% endfor %}
-
     {% if loadmytrees == 'false' %}
       {% for value in planters %}
         addToLeaderboard({{loop.index}}, "{{value[0]}}", {{value[1]}});
       {% endfor %}
     {% endif %}
-
     {% if loadmytrees == 'about' %}
       makeAboutPage("{{aboutmsg}}")
     {% endif %}

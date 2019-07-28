@@ -34,6 +34,7 @@ const addTree = (index, email, latlng, bool) => {
   if(bool == "true"){
     addToMySide(index, email, latlng);
   } // add elements to the sidebar treeslist
+  numTrees = index;
 }
 
 const addToMySide = (index, email, latlng) => {
@@ -47,11 +48,10 @@ const addToMySide = (index, email, latlng) => {
                      "<br>on " + currDate();
   listElement.appendChild(text);
   treecont.appendChild(listElement);
-  numTrees = index;
 }
 
 const addToLeaderboard = (index, username, num) => {
-  if(ifHomePage == "false"){
+    ifHomePage = "false";
     var boardElement = document.createElement("div");
     boardElement.className += "tree-obj";
     var text = document.createElement("p");
@@ -64,10 +64,10 @@ const addToLeaderboard = (index, username, num) => {
     text.innerHTML = "#" + index + ":\xa0\xa0\xa0" + username + "\xa0\xa0\xa0 " + num + " Trees";
     boardElement.appendChild(text);
     leaderboard.appendChild(boardElement);
-  }
 }
 
 const makeAboutPage = () => {
+    ifHomePage = "about";
     var boardElement1 = document.createElement("div");
     boardElement1.className += "tree-obj";
     var boardElement2 = document.createElement("div");
@@ -114,7 +114,7 @@ const ifNoTrees = (size) => {
     listElement.className += "tree-obj";
     text.innerHTML = "No trees planted yet. <br>Click on the map to plant a tree at your desired location.";
     listElement.appendChild(text);
-    side.appendChild(listElement);
+    treecont.appendChild(listElement);
   }
 }
 
