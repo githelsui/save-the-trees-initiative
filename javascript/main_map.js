@@ -1,8 +1,10 @@
 const sidebar = document.querySelector(".sidebar");
 const treecont = document.querySelector(".tree-container");
+const leaderboard = document.querySelector(".leaderboard-container");
 let treeslist = new Array();
 let myemail = "";
 let numTrees = 0;
+let ifHomePage = "";
 
 const treeicn = L.icon({
     iconUrl: 'https://img.icons8.com/color/52/000000/deciduous-tree.png',
@@ -23,23 +25,40 @@ mapLink =
         subdomains:['mt0','mt1','mt2','mt3']
     }).addTo(map);
 
-const addTree = (index, email, latlng) => {
+const addTree = (index, email, latlng, bool) => {
+  ifHomePage = bool;
+  L.marker( latlng, {icon: treeicn} ).addTo(map)
+   .bindPopup("Planted by " + email + "<br><center>on " + currDate() + "<br>Tree #" + index + "</center>");
+
+  if(bool == "true"){
+    addToMySide(index, email, latlng);
+  } // add elements to the sidebar treeslist
+}
+
+const addToMySide = (index, email, latlng) => {
   latlng.lat = parseFloat(latlng.lat.toFixed(5));
   latlng.lng = parseFloat(latlng.lng.toFixed(5));
-  console.log(latlng);
+  const headerElements = document.getElementsByClassName("tree-container");
+  var listElement = document.createElement("div");
+  listElement.className += "tree-obj";
+  var text = document.createElement("p");
+  text.innerHTML = "Tree #" + index + ": [" + latlng.lat + " , " + latlng.lng + "]" +
+                     "<br>on " + currDate();
+  listElement.appendChild(text);
+  treecont.appendChild(listElement);
+  numTrees = index;
+}
 
-      L.marker( latlng, {icon: treeicn} ).addTo(map)
-       .bindPopup("Planted by " + email + "<br><center>on " + currDate() + "<br>Tree #" + index + "</center>");
-       // add elements to the sidebar treeslist
-       const headerElements = document.getElementsByClassName("tree-container");
-       var listElement = document.createElement("div");
-       listElement.className += "tree-obj";
-       var text = document.createElement("p");
-       text.innerHTML = "Tree #" + index + ": [" + latlng.lat + " , " + latlng.lng + "]" +
-                          "<br>on " + currDate();
-       listElement.appendChild(text);
-       treecont.appendChild(listElement);
-       numTrees = index;
+const addToLeaderboard = (index, username, num) => {
+  if(ifHomePage == "false"){
+    var boardElement = document.createElement("div");
+    boardElement.className += "tree-obj";
+    var text = document.createElement("p");
+    text.className += "leaderboard-font";
+    text.innerHTML = "#" + index + ":\xa0\xa0\xa0" + username + "\xa0\xa0\xa0 " + num + " trees";
+    boardElement.appendChild(text);
+    leaderboard.appendChild(boardElement);
+  }
 }
 
 const addOtherTree = (email, latlng) => {
@@ -86,8 +105,10 @@ const setCurrEmail = (email) => {
 
 map.on('click', function(e) {
    numTrees++;
-   addTree(numTrees, myemail, e.latlng);
-   updateTree(numTrees);
+   addTree(numTrees, myemail, e.latlng, ifHomePage);
+   if(ifHomePage == "true"){
+     updateTree(numTrees);
+   }
    var mydate = currDate();
    const treeData = {
       'coordinates': e.latlng,

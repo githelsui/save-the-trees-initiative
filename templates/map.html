@@ -11,18 +11,19 @@
   <div class="container">
       <div id="canvas"></div>
       <div class="sidebar" id="sidebar">
+
+        <img src="https://img.icons8.com/pastel-glyph/64/ffffff/hand-planting.png" id="m-logo">
         <div class="dropdown">
           <button onclick="myFunction()" class="dropbtn">Menu</button>
           <div id="myDropdown" class="dropdown-content">
             <a href="/">Home</a>
-            <a href="#">Community Board</a>
+            <a href="/community">Community Board</a>
           </div>
         </div>
-        <img src="https://img.icons8.com/pastel-glyph/64/ffffff/hand-planting.png">
-        <h1>{{email}}</h1>
-        <h2>Trees you've saved:</h2>
-          <div class="tree-container" id="tree-container"></div>
-          <button type="submit" onclick="window.location.href = '{{logouturl}}'">Log Out</button>
+        <h1 id="m-email">{{email}}</h1>
+        <h2>{{headermessage}}</h2>
+          <div class={{containertype}} id="tree-container"></div>
+          <button type="submit" id="button" onclick="window.location.href = '{{logouturl}}'">Log Out</button>
       </div>
   </div>
 
@@ -32,13 +33,20 @@
     <script>
     const userEmail = "{{email}}";
     {% for tree in trees %}
-    addTree({{loop.index}}, userEmail, L.latLng({{tree.lat}}, {{tree.long}}));
+    addTree({{loop.index}}, userEmail, L.latLng({{tree.lat}}, {{tree.long}}), "{{loadmytrees}}");
     {% endfor %}
       ifNoTrees({{trees|length}});
       setCurrEmail(userEmail);
     {% for tree in othertrees %}
     addOtherTree("{{tree.email}}", L.latLng({{tree.lat}}, {{tree.long}}));
     {% endfor %}
+
+    {% if loadmytrees == 'false' %}
+      {% for key, value in planters.items() %}
+        addToLeaderboard({{loop.index}}, "{{key}}", {{value}});
+      {% endfor %}
+    {% endif %}
+
     </script>
 </body>
 </html>

@@ -8,7 +8,7 @@ class Tree(ndb.Model):
     email = ndb.StringProperty(required=True)
     date = ndb.StringProperty(required=True)
 
-class Planter(ndb.Model):
-    user_id = ndb.StringProperty(required=True)
-    email = ndb.StringProperty(required=True)
-    numberOfTrees = ndb.FloatProperty(required=True)
+# class Planter(ndb.Model):
+#     user_id = ndb.StringProperty(required=True)
+#     email = ndb.StringProperty(required=True)
+#     numberOfTrees = ndb.FloatProperty(required=True)
