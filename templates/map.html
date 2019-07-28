@@ -3,9 +3,8 @@
 <head>
     <title>Save the Trees Initiative</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"/>
+    <link rel="stylesheet" href="style/leaflet.css" />
     <link rel="stylesheet" href="style/style.css"/>
-
 </head>
 <body>
   <div class="container">
@@ -26,10 +25,8 @@
           <button type="submit" id="button" onclick="window.location.href = '{{logouturl}}'">Log Out</button>
       </div>
   </div>
-
-    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+    <script src="javascript/leaflet.js"></script>
     <script src="javascript/main_map.js"></script>
-
     <script>
     const userEmail = "{{email}}";
     {% for tree in trees %}
@@ -48,7 +45,7 @@
     {% endif %}
 
     {% if loadmytrees == 'about' %}
-      makeAboutPage()
+      makeAboutPage("{{aboutmsg}}")
     {% endif %}
 
     </script>
