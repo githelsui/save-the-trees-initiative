@@ -25,6 +25,11 @@
 	        user-select: none;
 	  -webkit-user-drag: none;
 	}
+
+.leaflet-marker-icon:hover{
+	background-color: rgba(255, 255, 255, .7);
+	border-radius: 30px;
+}
 /* Prevents IE11 from highlighting tiles in blue */
 .leaflet-tile::selection {
 	background: transparent;
